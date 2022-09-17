@@ -15,12 +15,40 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            // UserAccountsDrawerHeader(accountName: accountName, accountEmail: accountEmail)
+            UserAccountsDrawerHeader(
+              accountName: Text('Teste'),
+              accountEmail: Text('teste@gmail.com'),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Inicio'),
+              subtitle: Text('Tela inicial'),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/home');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout_outlined),
+              title: Text('Logout'),
+              subtitle: Text('Finalizar sessão'),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
-          title: Text('Angeliano App'),
-          backgroundColor: Colors.blueGrey,
-          actions: [
-            SwitchThemeApp(),
-          ]),
+        title: Text('Angeliano App'),
+        backgroundColor: Colors.blueGrey,
+        actions: [
+          SwitchThemeApp(),
+        ],
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
